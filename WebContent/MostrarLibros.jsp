@@ -18,7 +18,7 @@
 <body>
 <header> <h1>Mostrar Libros</h1> </header>
 <%
-out.println(libro.getTitulo());
+out.println(libro.getTitulo()+" "+libro.getAutor());
 %>
 <br>
 <a href="ListarLibros.jsp"><button type="button" class="btn btn-primary">Atras</button></a>

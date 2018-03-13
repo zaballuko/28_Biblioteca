@@ -13,23 +13,23 @@
 	<header>
 	<h1>¿Estas seguro?</h1>
 	</header>
-
-	<a
-		href="EliminarLibros.jsp?adelante=1&id=<%request.getParameter("id");%>"><button
+<!-- 
+	<a href="EliminarLibros.jsp?adelante=1&id=<%request.getParameter("id");%>"><button
 			type="button" class="btn btn-primary" value="Adelante">Adelante</button></a>
+-->
 
 	<%
-		System.out.println(request.getParameter("id"));
-		if (request.getParameter("adelante") == "1") {
+		//if (request.getParameter("adelante") == "1") {
 
 			int id = Integer.parseInt(request.getParameter("id"));
 			LibroModelo libroModelo = new LibroModelo();
 			libroModelo.delete(id);
 			out.print("Libro eliminado");
-		}
+		//}
 	%>
+	<br>
 	<a href="ListarLibros.jsp"><button type="button"
-			class="btn btn-primary">Cancelar</button></a>
+			class="btn btn-primary">Volver Atras</button></a>
 </body>
 
 <link rel="stylesheet"
