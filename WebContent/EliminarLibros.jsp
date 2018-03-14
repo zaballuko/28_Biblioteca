@@ -10,26 +10,35 @@
 <title>Borrar Libros</title>
 </head>
 <body>
-	<header>
-	<h1>¿Estas seguro?</h1>
-	</header>
-<!-- 
-	<a href="EliminarLibros.jsp?adelante=1&id=<%request.getParameter("id");%>"><button
-			type="button" class="btn btn-primary" value="Adelante">Adelante</button></a>
--->
+
+	<div class="panel panel-danger">
+      <div class="panel-heading">¿Estas seguro?</div>
+    	<div class="panel-body">
+		
+		
+			<a href="EliminarLibros.jsp?adelante=yes&id=<%=request.getParameter("id")%>" class="btn btn-danger btn-l" >Adelante</a>
+			<a href="ListarLibros.jsp" class="btn btn-primary btn-lg active" >Volver Atras</a>
+
+</div>
+    </div>
+	<!-- -->
+	
 
 	<%
-		//if (request.getParameter("adelante") == "1") {
+	//es null de primeras como no es null
+		if(request.getParameter("adelante")!= null){
+			
+		
+		if (request.getParameter("adelante").equals("yes")){
 
 			int id = Integer.parseInt(request.getParameter("id"));
 			LibroModelo libroModelo = new LibroModelo();
 			libroModelo.delete(id);
 			out.print("Libro eliminado");
-		//}
+		}
+	}
 	%>
-	<br>
-	<a href="ListarLibros.jsp"><button type="button"
-			class="btn btn-primary">Volver Atras</button></a>
+	
 </body>
 
 <link rel="stylesheet"

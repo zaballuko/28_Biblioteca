@@ -9,7 +9,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+a:hover {
+    color: red;
+    text-decoration:none;
+}
+a{
+    
+    text-decoration:none;
+}
 
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>listar Libros</title>
 </head>
@@ -19,15 +29,15 @@
 	</header>
 
 	<div class="table-responsive">
-		<table border=1>
+		<table class="table table-striped table-hover">
 			<thead>
-			</thead>
 			<tr>
 				<th>Titulo</th>
 				<th>Escritor</th>
-				<th>Informacion</th>
-				<th>Eliminar</th>
+				<th>Opciones</th>
 			</tr>
+			</thead>
+			
 			<%
 				LibroModelo libroModelo = new LibroModelo();
 				ArrayList<Libro> libros = libroModelo.selectAll();
@@ -36,8 +46,8 @@
 				while (i.hasNext()) {
 					Libro libro = i.next();
 					out.print("<tr><td>" + libro.getTitulo() + "</td><td>" + libro.getAutor()
-							+ "</td><td><a href='MostrarLibros.jsp?id=" + libro.getId()
-							+ "'>Ver</a></td><td><a href='EliminarLibros.jsp?id=" + libro.getId()
+							+ "</td><td><a style href='MostrarLibros.jsp?id=" + libro.getId()
+							+ "'>Ver</a>/<a style='text-decoration:none;color: red;' href='EliminarLibros.jsp?id=" + libro.getId()
 							+ "'>Eliminar</a></td></tr>");
 				} //jsp interrogacion parametro = valor & interrogacion parametro = valor
 			%>

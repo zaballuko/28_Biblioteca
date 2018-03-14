@@ -18,9 +18,7 @@
 %>
 <html>
 <script>
-	function(){
-		
-	}
+
 </script>
 <head>
 
@@ -28,14 +26,23 @@
 <title>Editar Libros</title>
 </head>
 <body>
+
 <header> <h1>Insertar Libros</h1> </header>
+<div class="container">
 <form action="#" method="post">
-	Titulo:<input type=text name="titulo" placeholder="Inserta un titulo">
-	<br>
-	Autor:<input type=text name="autor" placeholder="Inserta un autor">
-	<br>
-		  <input type="submit" name="submit" value="DALE!">
+<div class="form-group">
+	 <label for="pwd">Titulo:</label>
+	<input type=text class="form-control" name="titulo" placeholder="Inserta un titulo">
+</div>
+	<div class="form-group">
+	<label for="pwd">Autor:</label>
+	<input type=text class="form-control" name="autor" placeholder="Inserta un autor">
+</div>
+<div class="form-group">	
+		  <input type="submit" class="form-control" name="submit" value="DALE!">
+</div>
 </form>
+</div>
 <%
 	
 	
