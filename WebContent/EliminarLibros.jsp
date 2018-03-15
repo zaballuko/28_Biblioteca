@@ -14,31 +14,42 @@
 	<div class="panel panel-danger">
       <div class="panel-heading">¿Estas seguro?</div>
     	<div class="panel-body">
+    	<%
+	LibroModelo libroModelo = new LibroModelo();
+	String idString = request.getParameter("id");
+	int id = Integer.parseInt(idString);
+	Libro libro = libroModelo.select(id);
+	out.println("<h3><b>Libro:</b></h3>"+libro.getTitulo());
+	out.println("<h3><b>Autor:</b></h3>"+libro.getAutor());
+	
+	%>
+	<br>
 		
 		
-			<a href="EliminarLibros.jsp?adelante=yes&id=<%=request.getParameter("id")%>" class="btn btn-danger btn-l" >Adelante</a>
-			<a href="ListarLibros.jsp" class="btn btn-primary btn-lg active" >Volver Atras</a>
+			
 
 </div>
     </div>
+    
 	<!-- -->
 	
 
 	<%
 	//es null de primeras como no es null
 		if(request.getParameter("adelante")!= null){
-			
-		
-		if (request.getParameter("adelante").equals("yes")){
 
-			int id = Integer.parseInt(request.getParameter("id"));
-			LibroModelo libroModelo = new LibroModelo();
-			libroModelo.delete(id);
-			out.print("Libro eliminado");
+		if (request.getParameter("adelante").equals("yes")){
+			
+			
+			
+			libroModelo.delete(id);%>
+			<script type="text/javascript" >alert("Libro eliminado con exito");window.location.href='ListarLibros.jsp';</script>
+			<%
 		}
 	}
 	%>
-	
+	<a href="EliminarLibros.jsp?adelante=yes&id=<%=request.getParameter("id")%>" class="btn btn-danger btn-l" >Adelante</a>
+			<a href="ListarLibros.jsp" class="btn btn-primary btn-lg active" >Volver Atras</a>
 </body>
 
 <link rel="stylesheet"

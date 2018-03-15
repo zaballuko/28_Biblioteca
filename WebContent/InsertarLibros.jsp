@@ -54,11 +54,11 @@
 		//insertar los datos
 		LibroModelo libroModelo = new LibroModelo();
 		libroModelo.insert(libro);
-		//imprimir por pantalla
+		//imprimir por pantalla%>
 		
-		out.print("<p>EL libro se ha introducido correctamente</p>");
-	}
-%>
+		<script type="text/javascript" >alert("Libro se ha introducido con exito");window.location.href='ListarLibros.jsp';</script>
+	<%}%>
+
 <br>
 <a href="ListarLibros.jsp"><button type="button" class="btn btn-primary">Volver</button></a>	
 </body>

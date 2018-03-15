@@ -9,14 +9,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="./css/style.css" type="text/css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+$(document).ready( function () {
+	
+    $('#table_id').DataTable();
+} );
+
+</script>
+
 <style>
 a:hover {
-    color: red;
+    color: green;
     text-decoration:none;
+    font-weight: bold;
 }
 a{
-    
     text-decoration:none;
+}
+#eliminar:hover{
+	color: red;
+}
+#eliminar{
+	color: orange;
 }
 
 </style>
@@ -29,7 +54,7 @@ a{
 	</header>
 
 	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover" id="table_id" class="display">
 			<thead>
 			<tr>
 				<th>Titulo</th>
@@ -37,6 +62,7 @@ a{
 				<th>Opciones</th>
 			</tr>
 			</thead>
+			<tbody>
 			
 			<%
 				LibroModelo libroModelo = new LibroModelo();
@@ -47,11 +73,11 @@ a{
 					Libro libro = i.next();
 					out.print("<tr><td>" + libro.getTitulo() + "</td><td>" + libro.getAutor()
 							+ "</td><td><a style href='MostrarLibros.jsp?id=" + libro.getId()
-							+ "'>Ver</a>/<a style='text-decoration:none;color: red;' href='EliminarLibros.jsp?id=" + libro.getId()
-							+ "'>Eliminar</a></td></tr>");
+							+ "'>Ver</a>/<a id='eliminar'' href='EliminarLibros.jsp?id=" + libro.getId()
+							+ "'>Eliminar</a></td>/<a href='#'>Editar</a></tr>");
 				} //jsp interrogacion parametro = valor & interrogacion parametro = valor
 			%>
-
+			</tbody>
 		</table>
 	</div>
 	<br>
@@ -62,21 +88,5 @@ a{
 			class="btn btn-primary">Atras</button></a>
 
 </body>
-<link rel="stylesheet" href="./css/style.css" type="text/css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
 
 </html>
