@@ -43,6 +43,19 @@ a{
 #eliminar{
 	color: orange;
 }
+#editar{
+	color: violet;
+}
+#editar:hover{
+	color: purple;
+}
+#container{
+	margin-left:10px;
+	margin-right:50px;
+}
+#insertar{
+	margin-left:10px;
+}
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -52,8 +65,8 @@ a{
 	<header>
 	<h1>listar Libros</h1>
 	</header>
-
-	<div class="table-responsive">
+	
+	<div class="table-responsive" class="col-xs-12 col-sm-6 col-md-4 col-lg-2" id="container" >
 		<table class="table table-striped table-hover" id="table_id" class="display">
 			<thead>
 			<tr>
@@ -74,7 +87,7 @@ a{
 					out.print("<tr><td>" + libro.getTitulo() + "</td><td>" + libro.getAutor()
 							+ "</td><td><a style href='MostrarLibros.jsp?id=" + libro.getId()
 							+ "'>Ver</a>/<a id='eliminar'' href='EliminarLibros.jsp?id=" + libro.getId()
-							+ "'>Eliminar</a></td>/<a href='#'>Editar</a></tr>");
+							+ "'>Eliminar</a>/<a id='editar' href='#'>Editar</a></td></tr>");
 				} //jsp interrogacion parametro = valor & interrogacion parametro = valor
 			%>
 			</tbody>
@@ -83,7 +96,7 @@ a{
 	<br>
 
 	<a href="InsertarLibros.jsp"><button type="button"
-			class="btn btn-primary">Insertar</button></a>
+			class="btn btn-primary"  id="insertar" >Insertar</button></a>
 	<a href="GestorDeLibros.html"><button type="button"
 			class="btn btn-primary">Atras</button></a>
 

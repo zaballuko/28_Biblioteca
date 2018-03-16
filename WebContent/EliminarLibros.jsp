@@ -8,10 +8,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Borrar Libros</title>
+<style type="text/css">
+#table{
+	margin-top:10px;
+	margin-left:10px;
+	margin-right:50px;
+}
+#adelante{
+	margin-left:10px;
+}
+</style>
 </head>
 <body>
 
-	<div class="panel panel-danger">
+	<div class="panel panel-danger"  id="table" >
       <div class="panel-heading">¿Estas seguro?</div>
     	<div class="panel-body">
     	<%
@@ -48,7 +58,7 @@
 		}
 	}
 	%>
-	<a href="EliminarLibros.jsp?adelante=yes&id=<%=request.getParameter("id")%>" class="btn btn-danger btn-l" >Adelante</a>
+	<a href="EliminarLibros.jsp?adelante=yes&id=<%=request.getParameter("id")%>" class="btn btn-danger btn-l"  id="adelante" >Adelante</a>
 			<a href="ListarLibros.jsp" class="btn btn-primary btn-lg active" >Volver Atras</a>
 </body>
 

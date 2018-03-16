@@ -12,11 +12,21 @@
 %>
 <html>
 <head>
+<style type="text/css">
+#table{
+	margin-top:10px;
+	margin-left:10px;
+	margin-right:50px;
+}
+#atras{
+	margin-left:10px;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title> Información del Libro</title>
 </head>
 <body>
-	<div class="panel panel-primary">
+	<div class="panel panel-primary" id="table" >
       <div class="panel-heading">Mostar Libros</div>
     	<div class="panel-body">
 	
@@ -28,7 +38,7 @@
 
 
 
-<a href="ListarLibros.jsp" class="btn btn-primary">Atras</a>
+<a href="ListarLibros.jsp" class="btn btn-primary" id="atras" >Atras</a>
 </body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
