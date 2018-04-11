@@ -4,3 +4,5 @@
 session.removeAttribute("iniciado");
 out.print("logout realizado");
 %>
+<br>
+<a href="ListarLibros.jsp"><button type="button" class="btn btn-primary"  id="volver">Volver</button></a>

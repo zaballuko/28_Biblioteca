@@ -19,19 +19,19 @@
 
 	<section class="container">
 			<section class="login-form">
-				<form method="post" action="" role="login">
+				<form  action="login.jsp" method="post" role="login">
 					<section>
 						<h2>Please sign in</h2>
 						<div class="form-group">
 		    				<div class="input-group">
 			      				<div class="input-group-addon"><span class="text-primary glyphicon glyphicon-envelope"></span></div>
-								<input type="email" name="email" placeholder="Email" required class="form-control" />
+								<input type="text" name="dni" placeholder="dni" required class="form-control" />
 							</div>
 						</div>
 						<div class="form-group">
 		    				<div class="input-group">
 			      				<div class="input-group-addon"><span class="text-primary glyphicon glyphicon-lock"></span></div>
-								<input type="password" name="password" placeholder="Password" required class="form-control" />
+								<input type="password" name="contrasenia" placeholder="Password" required class="form-control" />
 							</div>
 						</div>
 						
@@ -39,7 +39,7 @@
 							<input type="checkbox" name="remember" value="1" /> Remember me
 						</div>
 						
-						<button type="submit" name="go" class="btn btn-block btn-success">Sign in</button>
+						<button type="submit" value="entrar" name="entrar" class="btn btn-block btn-success">Log in</button>
 					</section>
 					<div>
 						<a href="#">Forgot password ?</a>
@@ -50,5 +50,7 @@
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<br>
+<a href="ListarLibros.jsp"><button type="button" class="btn btn-primary"  id="volver">Volver</button></a>
 </body>
 </html>
