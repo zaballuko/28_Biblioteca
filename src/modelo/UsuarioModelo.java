@@ -23,6 +23,9 @@ public class UsuarioModelo extends Conector {
 				usuario.setEdad(rs.getInt("edad"));
 				usuario.setDni(rs.getString("dni"));
 				usuario.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+				usuario.setContrasenia(rs.getString("contrasenia"));
+				usuario.setRol(rs.getBoolean("rol"));
+				usuario.setImage(rs.getString("image"));
 
 				usuarios.add(usuario);
 			}
@@ -49,6 +52,9 @@ public class UsuarioModelo extends Conector {
 				usuario.setEdad(rs.getInt("edad"));
 				usuario.setDni(rs.getString("dni"));
 				usuario.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+				usuario.setContrasenia(rs.getString("contrasenia"));
+				usuario.setRol(rs.getBoolean("rol"));
+				usuario.setImage(rs.getString("image"));
 				return usuario;
 			}
 
@@ -79,13 +85,16 @@ public class UsuarioModelo extends Conector {
 		PreparedStatement pst;
 		try {
 			pst = super.conexion.prepareStatement(
-					"update usuarios set nombre=?, apellido=?, edad=?, fecha_nacimiento=?, dni=? where id=?");
+					"update usuarios set nombre=?, apellido=?, edad=?, fecha_nacimiento=?, dni=?, contrasenia=?, rol=?, image=? where id=?");
 			pst.setString(1, usuario.getNombre());
 			pst.setString(2, usuario.getApellido());
 			pst.setInt(3, usuario.getEdad());
 			pst.setInt(4, usuario.getId());
 			pst.setDate(5, new java.sql.Date(usuario.getFechaNacimiento().getTime()));
 			pst.setString(6, usuario.getDni());
+			pst.setString(7, usuario.getContrasenia());
+			pst.setBoolean(8, usuario.getRol());
+			pst.setString(9, usuario.getImage());
 
 			pst.executeUpdate();
 		} catch (SQLException e) {
@@ -96,11 +105,15 @@ public class UsuarioModelo extends Conector {
 	public void insert(Usuario usuario) {
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement(
-					"INSERT INTO usuarios (nombre, apellido, edad, dni, fecha_nacimiento) values(?,?,?,?,?)");
+					"INSERT INTO usuarios (nombre, apellido, edad, dni, fecha_nacimiento, contrasenia, rol, image) values(?,?,?,?,?,?,?,?)");
 			pst.setString(1, usuario.getNombre());
 			pst.setString(2, usuario.getApellido());
 			pst.setInt(3, usuario.getEdad());
 			pst.setString(4, usuario.getDni());
+			pst.setString(5, usuario.getContrasenia());
+			pst.setBoolean(6, usuario.getRol());
+			pst.setString(7, usuario.getImage());
+			
 
 			java.sql.Date sqlData = new java.sql.Date(usuario.getFechaNacimiento().getTime());
 			pst.setDate(4, sqlData);
@@ -128,6 +141,7 @@ public class UsuarioModelo extends Conector {
 				usuario.setEdad(rs.getInt("edad"));
 				usuario.setDni(rs.getString("dni"));
 				usuario.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+				usuario.setContrasenia(rs.getNString("contrasenia"));
 
 				usuarios.add(usuario);
 			}
@@ -154,6 +168,7 @@ public class UsuarioModelo extends Conector {
 				usuario.setEdad(rs.getInt("edad"));
 				usuario.setDni(rs.getString("dni"));
 				usuario.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+				usuario.setContrasenia(rs.getString("contrasenia"));
 
 				usuarios.add(usuario);
 			}
@@ -181,6 +196,7 @@ public class UsuarioModelo extends Conector {
 				usuario.setEdad(rs.getInt("edad"));
 				usuario.setDni(rs.getString("dni"));
 				usuario.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+				usuario.setContrasenia(rs.getString("contrasenia"));
 
 				usuarios.add(usuario);
 			}
@@ -210,6 +226,8 @@ public class UsuarioModelo extends Conector {
 				usuario.setDni(rs.getString("dni"));
 				usuario.setEdad(rs.getInt("edad"));
 				usuario.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+				usuario.setRol(rs.getBoolean("rol"));
+				usuario.setContrasenia(rs.getString("contrasenia"));
 
 				return usuario;
 			}
@@ -221,5 +239,38 @@ public class UsuarioModelo extends Conector {
 		return null;
 
 	}
+	public Usuario selectPorDniContrasenia(String dni, String contrasenia) {
+		PreparedStatement pst;
+		
+		try {
+			pst = super.conexion.prepareStatement("select * from usuarios where dni = ? AND contrasenia = ?");
+			pst.setString(1, dni);
+			pst.setString(2, contrasenia);
+			ResultSet rs = pst.executeQuery();
+			// Statement st = super.conexion.createStatement();
+			// ResultSet rs = st.executeQuery("select * from usuarios where dni
+			// = '" + dni + "'");
+			
+			if (rs.next()) {
+				Usuario usuario = new Usuario();
+				usuario.setId(rs.getInt("id"));
+				usuario.setNombre(rs.getString("nombre"));
+				usuario.setApellido(rs.getString("apellido"));
+				usuario.setDni(rs.getString("dni"));
+				usuario.setEdad(rs.getInt("edad"));
+				usuario.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+				usuario.setRol(rs.getBoolean("rol"));
+				usuario.setContrasenia(rs.getString("contrasenia"));
+
+				return usuario;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 
 }

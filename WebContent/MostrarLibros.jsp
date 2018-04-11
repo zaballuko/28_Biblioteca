@@ -32,6 +32,8 @@
 	
 			<%out.println("<h3><b>Libro:</b></h3>"+libro.getTitulo());%>
 			<%out.println("<h3><b>Autor:</b></h3>"+libro.getAutor());%>
+			<br>
+			<img src="image/<%=libro.getImage()%>" width='200px' height='200px'>
 
 	</div>
 </div>

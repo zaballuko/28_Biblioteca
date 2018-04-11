@@ -4,21 +4,17 @@
 <%@page import="modelo.Libro"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-	
 	//para pillar el titulo y el autor introducido
-	String titulo = request.getParameter("titulo");
-	String autor = request.getParameter("autor");
 	
-	if(titulo == null || autor == null ||titulo == "" || autor == ""){
-		if(titulo == "" || autor == ""){
-			out.print("<br><p>Error: Falta meter un parametro </p>");
-		}
-		
-	
+	int id = Integer.parseInt(request.getParameter("id"));
+	LibroModelo libroModelo = new LibroModelo();
+	Libro libro = libroModelo.select(id);
+
 %>
 <style>
 #volver{
 	margin-left:10px;
+	cursor: pointer;
 }
 </style>
 <html>
@@ -32,40 +28,38 @@
 </head>
 <body>
 
-<header> <h1>Insertar Libros</h1> </header>
+<header> <h1>Editar Libros</h1> </header>
 <div class="container">
 <form action="#" method="post">
+<input type="hidden" name="id" value="<%=libro.getId()%>">
 <div class="form-group">
 	 <label for="pwd">Titulo:</label>
-	<input type=text class="form-control" name="titulo" placeholder="Inserta un titulo">
+	<input type=text class="form-control" name="titulo" value="<%=libro.getTitulo()%>">
 </div>
 	<div class="form-group">
 	<label for="pwd">Autor:</label>
-	<input type=text class="form-control" name="autor" placeholder="Inserta un autor">
+	<input type=text class="form-control" name="autor" value="<%=libro.getAutor()%>">
 </div>
 <div class="form-group">	
-		  <input type="submit" class="form-control" name="submit" value="DALE!">
+		  <input type="submit" class="form-control" name="submit" value="Guardar cambios">
 </div>
 </form>
 </div>
 <%
-	
-	
-	}else{
-		//para meter los datos al libro
-		Libro libro = new Libro();
-		libro.setTitulo(titulo);
-		libro.setAutor(autor);
-		//insertar los datos
-		LibroModelo libroModelo = new LibroModelo();
-		libroModelo.insert(libro);
-		//imprimir por pantalla%>
+	if(request.getParameter("submit") != null){
 		
-		<script type="text/javascript" >alert("Libro se ha introducido con exito");window.location.href='ListarLibros.jsp';</script>
+		libro.setTitulo(request.getParameter("titulo"));
+		libro.setAutor(request.getParameter("autor"));
+		libroModelo.update(libro);%>
+		
+			
+		<script type="text/javascript" >alert("Libro se ha modificado con exito");window.location.href='ListarLibros.jsp';</script>
 	<%}%>
+	
+	
 
 <br>
-<a href="ListarLibros.jsp"><button type="button" class="btn btn-primary"  id="volver">Volver</button></a>	
+<a href="ListarLibros.jsp"><button type="button" class="btn btn-primary" id="volver">Volver</button></a>	
 </body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

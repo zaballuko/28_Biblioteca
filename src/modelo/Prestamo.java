@@ -8,6 +8,8 @@ public class Prestamo {
 	private Usuario usuario;
 	private Date fechaPrestamo;
 	private Date fechaLimite;
+	private boolean entregado;
+	
 	
 	public Prestamo(){
 		
@@ -46,7 +48,7 @@ public class Prestamo {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	private boolean entregado;
+	
 	
 	public int getId() {
 		return id;
@@ -71,6 +73,15 @@ public class Prestamo {
 	}
 	public void setEntregado(boolean entregado) {
 		this.entregado = entregado;
+	}
+	
+	public void entregadoSiNo(){
+		
+		if(this.isEntregado()){
+			System.out.println("Esta entregado");
+		}else {
+			System.out.println("No Esta entregado");
+		}
 	}
 	
 	

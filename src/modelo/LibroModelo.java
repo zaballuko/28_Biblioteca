@@ -11,6 +11,7 @@ public class LibroModelo extends Conector {
 	public ArrayList<Libro> selectAll() {
 
 		ArrayList<Libro> libros = new ArrayList<Libro>();
+		PrestamoModelo prestamoModelo = new PrestamoModelo();
 
 		try {
 			Statement st = super.conexion.createStatement();
@@ -20,6 +21,8 @@ public class LibroModelo extends Conector {
 				libro.setId(rs.getInt("id"));
 				libro.setTitulo(rs.getString("titulo"));
 				libro.setAutor(rs.getString("autor"));
+				libro.setImage(rs.getString("image"));
+				libro.setPrestamos(prestamoModelo.prestamosDelLibro(libro));
 
 				libros.add(libro);
 			}
@@ -42,6 +45,7 @@ public class LibroModelo extends Conector {
 				libro.setId(rs.getInt("id"));
 				libro.setTitulo(rs.getString("titulo"));
 				libro.setAutor(rs.getString("autor"));
+				libro.setImage(rs.getString("image"));
 				return libro;
 			}
 
@@ -50,19 +54,20 @@ public class LibroModelo extends Conector {
 		}
 		return null;
 	}
-	
+
 	public Libro selectPorTitulo(String titulo) {
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement("select * from libros where titulo = ?");
 			pst.setString(1, titulo);
 			ResultSet rs = pst.executeQuery();
 
-			//si hemos recibido alguna fila
+			// si hemos recibido alguna fila
 			if (rs.next()) {
 				Libro libro = new Libro();
 				libro.setId(rs.getInt("id"));
 				libro.setTitulo(rs.getString("titulo"));
 				libro.setAutor(rs.getString("autor"));
+				libro.setImage(rs.getString("image"));
 				return libro;
 			}
 
@@ -90,10 +95,11 @@ public class LibroModelo extends Conector {
 
 		PreparedStatement pst;
 		try {
-			pst = super.conexion.prepareStatement("update libros set titulo=?, autor=? where id=?");
+			pst = super.conexion.prepareStatement("update libros set titulo=?, autor=?, image=? where id=?");
 			pst.setString(1, libro.getTitulo());
 			pst.setString(2, libro.getAutor());
-			pst.setInt(3, libro.getId());
+			pst.setString(3, libro.getImage());
+			pst.setInt(4, libro.getId());
 
 			pst.executeUpdate();
 		} catch (SQLException e) {
