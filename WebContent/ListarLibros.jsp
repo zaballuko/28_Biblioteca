@@ -195,8 +195,9 @@ a {
 			
 	<a href="login_form.jsp"><button type="button"
 			class="btn btn-primary">Login</button></a>
-<!-- 	<a href="login2.jsp"><button type="button"
-			class="btn btn-primary">Login2</button></a> -->
+ 	<a href="login2.jsp"><button type="button"
+			class="btn btn-primary">Login2</button></a>
+
 			
 	<a href="image.png" class="popupimage" style="text-decoration: none"><button
 			type="button" class="btn btn-primary">Qrcode</button></a>
@@ -204,7 +205,7 @@ a {
 	<div class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<img class="img-responsive" style="width: 100%" src="image/book.png">
+				<img class="img-responsive" style="width: 100%" src="image/qr.jpg">
 			</div>
 		</div>
 	</div>
