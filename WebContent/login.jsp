@@ -1,8 +1,8 @@
 <%@page import="modelo.Usuario"%>
 <%@page import="modelo.UsuarioModelo"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%
+	pageEncoding="ISO-8859-1"%>
+<%
     String dni = request.getParameter("dni");
     String contrasenia = request.getParameter("contrasenia");
         
@@ -13,7 +13,7 @@
         
     	if(usuario != null){
     		session.setAttribute("dni", usuario.getDni());
-        	response.sendRedirect("sistema.jsp");
+        	response.sendRedirect("GestorDeLibros.html");
     		
     	}else{
     		response.sendRedirect("login_form.jsp");

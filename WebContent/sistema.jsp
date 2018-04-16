@@ -25,9 +25,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				Estas dentro
 				<br>
-				
 				<a href="logout.jsp">logout</a>
 			</div>
 		</div>

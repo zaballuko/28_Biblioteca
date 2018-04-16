@@ -40,7 +40,7 @@
 		$("#notification").click(function() {
 			$("body").css({
 				"background-color" : "#2c3e50",
-				"color": "white"
+				"color" : "white"
 			});
 		});
 	});
@@ -124,33 +124,38 @@ a {
 	right: 3px;
 }
 
+#logout:hover {
+	color: #fff;
+	background-color: #ff3333;
+	border-color: #ff3333;
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>listar Libros</title>
 </head>
 <body>
-<div id="container">
-	<header>
+	<div id="container">
+		<header>
 
 
-	<h1>listar Libros</h1>
-	</header>
+		<h1>listar Libros</h1>
+		</header>
 
-	<div class="table-responsive"
-		class="col-xs-2 col-sm-4 col-md-6 col-lg-12" id="container">
-		<table class="table table-striped table-hover" id="table_id"
-			class="display">
-			<thead>
-				<tr>
-					<th>Titulo</th>
-					<th>Escritor</th>
-					<th>Opciones</th>
-					<th>Estado de entrega</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="table-responsive"
+			class="col-xs-2 col-sm-4 col-md-6 col-lg-12" id="container">
+			<table class="table table-striped table-hover" id="table_id"
+				class="display">
+				<thead>
+					<tr>
+						<th>Titulo</th>
+						<th>Escritor</th>
+						<th>Opciones</th>
+						<th>Estado de entrega</th>
+					</tr>
+				</thead>
+				<tbody>
 
-				<%
+					<%
 					LibroModelo libroModelo = new LibroModelo();
 					
 					ArrayList<Libro> libros = libroModelo.selectAll();
@@ -183,36 +188,29 @@ a {
 							
 							
 				%>
-			</tbody>
-		</table>
-	</div>
-	<br>
+				</tbody>
+			</table>
+		</div>
+		<br> <a href="InsertarLibros.jsp"><button type="button"
+				class="btn btn-primary" id="insertar">Insertar</button></a> <a
+			href="GestorDeLibros.html"><button type="button"
+				class="btn btn-primary">Atras</button></a> <a href="login_form.jsp"><button
+				type="button" class="btn btn-primary" id="logout">logout</button></a> <a
+			href="image.png" class="popupimage" style="text-decoration: none"><button
+				type="button" class="btn btn-primary">Qrcode</button></a>
 
-	<a href="InsertarLibros.jsp"><button type="button"
-			class="btn btn-primary" id="insertar">Insertar</button></a>
-	<a href="GestorDeLibros.html"><button type="button"
-			class="btn btn-primary">Atras</button></a>
-			
-	<a href="login_form.jsp"><button type="button"
-			class="btn btn-primary">Login</button></a>
- 	<a href="login2.jsp"><button type="button"
-			class="btn btn-primary">Login2</button></a>
-
-			
-	<a href="image.png" class="popupimage" style="text-decoration: none"><button
-			type="button" class="btn btn-primary">Qrcode</button></a>
-
-	<div class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<img class="img-responsive" style="width: 100%" src="image/qr.jpg">
+		<div class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<img class="img-responsive" style="width: 100%" src="image/qr.jpg">
+				</div>
 			</div>
 		</div>
+		<div class="toggle-ios">
+			<input type="checkbox" id="notification" checked /> <label
+				for="notification"></label>
+		</div>
 	</div>
-	<div class="toggle-ios">
-		<input type="checkbox" id="notification" checked /> <label for="notification"></label>
-	</div>
-</div>
 </body>
 
 </html>
